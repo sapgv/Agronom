@@ -103,7 +103,6 @@ extension UITabBar {
     
     static func restoreAppearance() {
         let appearance = UITabBarAppearance()
-        appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
@@ -115,6 +114,5 @@ extension UITableView {
     static func restoreAppearance() {
         UITableView.appearance().sectionHeaderTopPadding = 0.0
     }
-    
     
 }
