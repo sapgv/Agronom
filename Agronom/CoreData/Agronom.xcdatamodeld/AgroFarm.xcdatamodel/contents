@@ -5,6 +5,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="planted" optional="YES" attributeType="String"/>
         <attribute name="size" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="cdTask" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDTaskManager" inverseName="cdField" inverseEntity="CDTaskManager"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -14,7 +15,7 @@
     <entity name="CDImage" representedClassName="CDImage" syncable="YES" codeGenerationType="class">
         <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDTaskManager" inverseName="images_" inverseEntity="CDTaskManager"/>
+        <relationship name="cdTask" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDTaskManager" inverseName="images_" inverseEntity="CDTaskManager"/>
     </entity>
     <entity name="CDTaskManager" representedClassName="CDTaskManager" syncable="YES" codeGenerationType="class">
         <attribute name="datetime_completed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -26,8 +27,11 @@
         <attribute name="odometer_start" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="report" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="cdVehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDVehicle" inverseName="tasks_" inverseEntity="CDVehicle"/>
-        <relationship name="images_" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDImage" inverseName="task" inverseEntity="CDImage"/>
+        <relationship name="cdField" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDField" inverseName="cdTask" inverseEntity="CDField"/>
+        <relationship name="cdOperation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDTaskOperation" inverseName="cdTask" inverseEntity="CDTaskOperation"/>
+        <relationship name="cdVehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDVehicle" inverseName="cdTask" inverseEntity="CDVehicle"/>
+        <relationship name="cdWorker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWorker" inverseName="cdTask" inverseEntity="CDWorker"/>
+        <relationship name="images_" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDImage" inverseName="cdTask" inverseEntity="CDImage"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -38,6 +42,7 @@
         <attribute name="descriptionText" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="cdTask" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDTaskManager" inverseName="cdOperation" inverseEntity="CDTaskManager"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -56,7 +61,7 @@
     <entity name="CDVehicle" representedClassName="CDVehicle" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="tasks_" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDTaskManager" inverseName="cdVehicle" inverseEntity="CDTaskManager"/>
+        <relationship name="cdTask" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDTaskManager" inverseName="cdVehicle" inverseEntity="CDTaskManager"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -67,6 +72,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="position" optional="YES" attributeType="String"/>
+        <relationship name="cdTask" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDTaskManager" inverseName="cdWorker" inverseEntity="CDTaskManager"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>

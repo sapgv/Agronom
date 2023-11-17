@@ -32,6 +32,11 @@ final class Storage {
                 let cdTaskManager = CDTaskManager(context: privateContext)
                 cdTaskManager.fill(item: item)
                 
+                cdTaskManager.cdOperation = self.createOperation(item.operation, inContext: privateContext)
+                cdTaskManager.cdField = self.createField(item.field, inContext: privateContext)
+                cdTaskManager.cdWorker = self.createWorker(item.worker, inContext: privateContext)
+                cdTaskManager.cdVehicle = self.createVehicle(item.vehicle, inContext: privateContext)
+                
             }
             
             Model.coreData.save(in: privateContext) { status in
@@ -171,5 +176,34 @@ final class Storage {
         
     }
     
+    //MARK: - Private
+    
+    private func createField(_ item: Field?, inContext context: NSManagedObjectContext) -> CDField? {
+        guard let item = item else { return nil }
+        let cdItem = CDField(context: context)
+        cdItem.fill(item: item)
+        return cdItem
+    }
+    
+    private func createWorker(_ item: Worker?, inContext context: NSManagedObjectContext) -> CDWorker? {
+        guard let item = item else { return nil }
+        let cdItem = CDWorker(context: context)
+        cdItem.fill(item: item)
+        return cdItem
+    }
+    
+    private func createOperation(_ item: TaskOperation?, inContext context: NSManagedObjectContext) -> CDTaskOperation? {
+        guard let item = item else { return nil }
+        let cdItem = CDTaskOperation(context: context)
+        cdItem.fill(item: item)
+        return cdItem
+    }
+    
+    private func createVehicle(_ item: Vehicle?, inContext context: NSManagedObjectContext) -> CDVehicle? {
+        guard let item = item else { return nil }
+        let cdItem = CDVehicle(context: context)
+        cdItem.fill(item: item)
+        return cdItem
+    }
     
 }

@@ -31,31 +31,13 @@ final class TaskManager: Identifiable, ObservableObject {
     
     let vehicle: Vehicle?
     
-    @Published var images: [UIImage] = []
+    let operation: TaskOperation?
     
-    init(id: Int,
-         title: String,
-         description: String,
-         vehicle: Vehicle? = nil,
-         datetime_planned: Date,
-         datetime_started: Date? = nil,
-         datetime_completed: Date? = nil,
-         odometer_start: Int? = nil,
-         odometer_end: Int? = nil,
-         report: String? = nil,
-         images: [UIImage] = []) {
-        self.id = id
-        self.title = title
-        self.description = description
-        self.vehicle = vehicle
-        self.datetime_planned = datetime_planned
-        self.datetime_started = datetime_started
-        self.datetime_completed = datetime_completed
-        self.odometer_start = odometer_start
-        self.odometer_end = odometer_end
-        self.report = report
-        self.images = images
-    }
+    let worker: Worker?
+    
+    let field: Field?
+    
+    var images: [UIImage] = []
     
     init(_ data: [String: Any]) {
         self.id = data["id"] as? Int ?? Int.random(in: 0...Int.max)
@@ -67,7 +49,35 @@ final class TaskManager: Identifiable, ObservableObject {
         self.odometer_start = data["odometer_start"] as? Int
         self.odometer_end = data["odometer_start"] as? Int
         self.report = data["report"] as? String
-        self.vehicle = nil
+        
+        if let data = data["operation"] as? [String: Any] {
+            self.operation = TaskOperation(data)
+        }
+        else {
+            self.operation = nil
+        }
+        
+        if let data = data["vehicle"] as? [String: Any] {
+            self.vehicle = Vehicle(data)
+        }
+        else {
+            self.vehicle = nil
+        }
+        
+        if let data = data["worker"] as? [String: Any] {
+            self.worker = Worker(data)
+        }
+        else {
+            self.worker = nil
+        }
+        
+        if let data = data["field"] as? [String: Any] {
+            self.field = Field(data)
+        }
+        else {
+            self.field = nil
+        }
+        
     }
     
 }
@@ -91,50 +101,3 @@ extension TaskManager {
 
 
 
-extension TaskManager {
-    
-    static var data: [[String: Any]] {
-        
-        let array = (1...5).map { i in
-            
-            return [
-                "id": "\(i)",
-                "operation": "Операция номер \(i)",
-                "vehicle": "Транспорт номер \(i)",
-                "text": "Описание номер \(i)",
-                "date": Date().ISO8601Format(),
-                "finished": false
-            ]
-            
-        }
-        
-        return array
-        
-    }
-    
-}
-
-extension TaskManager {
-    
-    static var randomTaskImages: [UIImage] {
-        
-        let images = [
-            UIImage(named: "nature1")!,
-            UIImage(named: "nature2")!,
-            UIImage(named: "nature3")!,
-            UIImage(named: "nature4")!,
-            UIImage(named: "nature2")!,
-            UIImage(named: "nature3")!,
-        ]
-        
-        return images
-        
-    }
-    
-    static var randomTaskPreview: TaskManager {
-        
-        return TaskManager(id: Int.random(in: 0...Int.max), title: "Заголовок задачи", description: "Описание задачи", vehicle: nil, datetime_planned: Date(), datetime_started: Date(), datetime_completed: Date(), odometer_start: 1000, odometer_end: 2000, report: "Отчет о завершении", images: randomTaskImages)
-        
-    }
-    
-}

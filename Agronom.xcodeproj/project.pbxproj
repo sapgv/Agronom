@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		106858A22B07CA7B001FA515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858A12B07CA7B001FA515 /* AppDelegate.swift */; };
 		106858A42B07CA7B001FA515 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858A32B07CA7B001FA515 /* SceneDelegate.swift */; };
-		106858A62B07CA7B001FA515 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858A52B07CA7B001FA515 /* ViewController.swift */; };
 		106858A92B07CA7B001FA515 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 106858A72B07CA7B001FA515 /* Main.storyboard */; };
 		106858AB2B07CA7D001FA515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 106858AA2B07CA7D001FA515 /* Assets.xcassets */; };
 		106858AE2B07CA7D001FA515 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 106858AC2B07CA7D001FA515 /* LaunchScreen.storyboard */; };
@@ -22,9 +21,7 @@
 		106858C72B07CF32001FA515 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858C62B07CF32001FA515 /* Api.swift */; };
 		106858CB2B07CF48001FA515 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858C92B07CF47001FA515 /* Service.swift */; };
 		106858CC2B07CF48001FA515 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858CA2B07CF48001FA515 /* Storage.swift */; };
-		106858D42B07CFCF001FA515 /* TaskMenegerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858CF2B07CFCF001FA515 /* TaskMenegerStatus.swift */; };
 		106858D52B07CFCF001FA515 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858D02B07CFCF001FA515 /* TaskManager.swift */; };
-		106858D62B07CFCF001FA515 /* TaskMechanic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858D12B07CFCF001FA515 /* TaskMechanic.swift */; };
 		106858D72B07CFCF001FA515 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858D32B07CFCF001FA515 /* Vehicle.swift */; };
 		106858D92B07CFF2001FA515 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858D82B07CFF2001FA515 /* Extensions.swift */; };
 		106858DB2B07D00F001FA515 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106858DA2B07D00F001FA515 /* Model.swift */; };
@@ -58,6 +55,9 @@
 		1068591A2B07FEB3001FA515 /* CDWorker + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106859192B07FEB3001FA515 /* CDWorker + Extensions.swift */; };
 		1068591D2B07FF4C001FA515 /* WorkerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1068591B2B07FF4C001FA515 /* WorkerCell.swift */; };
 		1068591E2B07FF4C001FA515 /* WorkerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1068591C2B07FF4C001FA515 /* WorkerCell.xib */; };
+		106859202B08017D001FA515 /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1068591F2B08017D001FA515 /* Worker.swift */; };
+		106859222B08018C001FA515 /* VehicleTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106859212B08018C001FA515 /* VehicleTool.swift */; };
+		106859242B08019E001FA515 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106859232B08019E001FA515 /* Field.swift */; };
 		A0A4D97B60485B32D36C139E /* Pods_Agronom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D740B9B743504471FC8D11D /* Pods_Agronom.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +65,6 @@
 		1068589E2B07CA7B001FA515 /* Agronom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Agronom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		106858A12B07CA7B001FA515 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		106858A32B07CA7B001FA515 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		106858A52B07CA7B001FA515 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		106858A82B07CA7B001FA515 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		106858AA2B07CA7D001FA515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		106858AD2B07CA7D001FA515 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,9 +78,7 @@
 		106858C62B07CF32001FA515 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		106858C92B07CF47001FA515 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		106858CA2B07CF48001FA515 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		106858CF2B07CFCF001FA515 /* TaskMenegerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskMenegerStatus.swift; sourceTree = "<group>"; };
 		106858D02B07CFCF001FA515 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
-		106858D12B07CFCF001FA515 /* TaskMechanic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskMechanic.swift; sourceTree = "<group>"; };
 		106858D32B07CFCF001FA515 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		106858D82B07CFF2001FA515 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		106858DA2B07D00F001FA515 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -115,6 +112,9 @@
 		106859192B07FEB3001FA515 /* CDWorker + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDWorker + Extensions.swift"; sourceTree = "<group>"; };
 		1068591B2B07FF4C001FA515 /* WorkerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerCell.swift; sourceTree = "<group>"; };
 		1068591C2B07FF4C001FA515 /* WorkerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkerCell.xib; sourceTree = "<group>"; };
+		1068591F2B08017D001FA515 /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
+		106859212B08018C001FA515 /* VehicleTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTool.swift; sourceTree = "<group>"; };
+		106859232B08019E001FA515 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		5D740B9B743504471FC8D11D /* Pods_Agronom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Agronom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF60AAB00787BD6B4FB75AA /* Pods-Agronom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agronom.debug.xcconfig"; path = "Target Support Files/Pods-Agronom/Pods-Agronom.debug.xcconfig"; sourceTree = "<group>"; };
 		C7CA0B3F7F6CF7C542E9F39B /* Pods-Agronom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agronom.release.xcconfig"; path = "Target Support Files/Pods-Agronom/Pods-Agronom.release.xcconfig"; sourceTree = "<group>"; };
@@ -157,12 +157,8 @@
 				106858C82B07CF3F001FA515 /* Service */,
 				106858C12B07CECA001FA515 /* View */,
 				106858B52B07CACA001FA515 /* Supporting Files */,
-				106858A52B07CA7B001FA515 /* ViewController.swift */,
 				106858E02B07D28D001FA515 /* Xib */,
-				106858D82B07CFF2001FA515 /* Extensions.swift */,
-				106858C62B07CF32001FA515 /* Api.swift */,
 				106858B92B07CBB5001FA515 /* CoreData */,
-				106858BF2B07CDF3001FA515 /* AppTabViewController.swift */,
 				106858BC2B07CC50001FA515 /* Extensions */,
 			);
 			path = Agronom;
@@ -199,6 +195,7 @@
 		106858BC2B07CC50001FA515 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				106858D82B07CFF2001FA515 /* Extensions.swift */,
 				106858BD2B07CC5B001FA515 /* Log.swift */,
 			);
 			path = Extensions;
@@ -207,9 +204,10 @@
 		106858C12B07CECA001FA515 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				106858BF2B07CDF3001FA515 /* AppTabViewController.swift */,
 				106858E52B07D733001FA515 /* ListViewController.swift */,
 				106859162B07FE35001FA515 /* WorkerListViewController */,
-				1068590D2B07F9F5001FA515 /* FieldListViewController */,
+				10F1A6562B0802BA003FCB81 /* FIELD MODULE */,
 				106859042B07F731001FA515 /* ToolListViewController */,
 				106858FB2B07F482001FA515 /* VehicleListViewController */,
 				106858E82B07ECDF001FA515 /* OperationListViewController */,
@@ -221,6 +219,7 @@
 		106858C82B07CF3F001FA515 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				106858C62B07CF32001FA515 /* Api.swift */,
 				106858C92B07CF47001FA515 /* Service.swift */,
 				106858CA2B07CF48001FA515 /* Storage.swift */,
 			);
@@ -231,9 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				106858CE2B07CFCF001FA515 /* TaskModel */,
-				106858D22B07CFCF001FA515 /* VehicelModel */,
+				106858D22B07CFCF001FA515 /* Objects */,
 				106858DA2B07D00F001FA515 /* Model.swift */,
-				106858ED2B07ED4E001FA515 /* TaskOperation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -241,19 +239,21 @@
 		106858CE2B07CFCF001FA515 /* TaskModel */ = {
 			isa = PBXGroup;
 			children = (
-				106858CF2B07CFCF001FA515 /* TaskMenegerStatus.swift */,
 				106858D02B07CFCF001FA515 /* TaskManager.swift */,
-				106858D12B07CFCF001FA515 /* TaskMechanic.swift */,
 			);
 			path = TaskModel;
 			sourceTree = "<group>";
 		};
-		106858D22B07CFCF001FA515 /* VehicelModel */ = {
+		106858D22B07CFCF001FA515 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
 				106858D32B07CFCF001FA515 /* Vehicle.swift */,
+				1068591F2B08017D001FA515 /* Worker.swift */,
+				106859212B08018C001FA515 /* VehicleTool.swift */,
+				106859232B08019E001FA515 /* Field.swift */,
+				106858ED2B07ED4E001FA515 /* TaskOperation.swift */,
 			);
-			path = VehicelModel;
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		106858E02B07D28D001FA515 /* Xib */ = {
@@ -327,6 +327,14 @@
 				106859172B07FE42001FA515 /* WorkerListViewModel.swift */,
 			);
 			path = WorkerListViewController;
+			sourceTree = "<group>";
+		};
+		10F1A6562B0802BA003FCB81 /* FIELD MODULE */ = {
+			isa = PBXGroup;
+			children = (
+				1068590D2B07F9F5001FA515 /* FieldListViewController */,
+			);
+			path = "FIELD MODULE";
 			sourceTree = "<group>";
 		};
 		1DFCA2C989B3A33B338E17A7 /* Pods */ = {
@@ -471,16 +479,17 @@
 				106858B82B07CBA9001FA515 /* Agronom.xcdatamodeld in Sources */,
 				106858E32B07D2A0001FA515 /* TaskCell.swift in Sources */,
 				106858FA2B07F47F001FA515 /* VehicleListViewController.swift in Sources */,
-				106858A62B07CA7B001FA515 /* ViewController.swift in Sources */,
 				1068591A2B07FEB3001FA515 /* CDWorker + Extensions.swift in Sources */,
 				106858DE2B07D0D7001FA515 /* CDVehicle + Extensions.swift in Sources */,
+				106859222B08018C001FA515 /* VehicleTool.swift in Sources */,
 				106859182B07FE42001FA515 /* WorkerListViewModel.swift in Sources */,
 				106858BE2B07CC5B001FA515 /* Log.swift in Sources */,
 				106858EE2B07ED4E001FA515 /* TaskOperation.swift in Sources */,
+				106859242B08019E001FA515 /* Field.swift in Sources */,
 				106858F42B07F162001FA515 /* CDField + Extensions.swift in Sources */,
 				1068591D2B07FF4C001FA515 /* WorkerCell.swift in Sources */,
-				106858D62B07CFCF001FA515 /* TaskMechanic.swift in Sources */,
 				1068590F2B07FA0A001FA515 /* FieldListViewModel.swift in Sources */,
+				106859202B08017D001FA515 /* Worker.swift in Sources */,
 				106858A22B07CA7B001FA515 /* AppDelegate.swift in Sources */,
 				106858DF2B07D0D7001FA515 /* CDTaskManager + Extensions.swift in Sources */,
 				106859002B07F4D5001FA515 /* VehicleCell.swift in Sources */,
@@ -494,7 +503,6 @@
 				106858D72B07CFCF001FA515 /* Vehicle.swift in Sources */,
 				106858DB2B07D00F001FA515 /* Model.swift in Sources */,
 				106859032B07F72E001FA515 /* ToolListViewController.swift in Sources */,
-				106858D42B07CFCF001FA515 /* TaskMenegerStatus.swift in Sources */,
 				106858C32B07CED7001FA515 /* TaskListViewController.swift in Sources */,
 				106858A42B07CA7B001FA515 /* SceneDelegate.swift in Sources */,
 				106858E62B07D733001FA515 /* ListViewController.swift in Sources */,

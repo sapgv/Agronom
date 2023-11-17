@@ -81,6 +81,11 @@ extension Optional where Wrapped == String {
         self ?? ""
     }
     
+    func defaultValue(value: String) -> String {
+        guard let self = self else { return value }
+        return self.isEmpty ? value : self
+    }
+    
 }
 
 extension UINavigationBar {
