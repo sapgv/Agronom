@@ -22,15 +22,9 @@ open class TaskSection {
 
 open class TaskSectionRow {
     
-//    public let cdAtolDevice: CDTaskManager?
-    
     public var cellType: UITableViewCell.Type {
         UITableViewCell.self
     }
-    
-//    public required init(cdAtolDevice: CDTaskManager?) {
-//        self.cdAtolDevice = cdAtolDevice
-//    }
     
 }
 

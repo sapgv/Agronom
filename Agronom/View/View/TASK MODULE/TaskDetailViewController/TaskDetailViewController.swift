@@ -17,7 +17,6 @@ final class TaskDetailViewController: ListViewController {
         self.setupTableView()
         self.layout()
         self.setupViewModel()
-        self.updateControllerResults()
     }
     
     private func setupViewModel() {
