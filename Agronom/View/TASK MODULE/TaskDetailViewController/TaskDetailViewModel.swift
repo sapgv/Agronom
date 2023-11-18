@@ -7,31 +7,15 @@
 
 import Foundation
 
-public protocol ITaskDetailViewModel: AnyObject {
-    
-    associatedtype Section: IAtolSettingSection where Section.Row == Row
-    
-    associatedtype Row: IAtolSettingsSectionRow
-    
-    var cdTaskManager: CDTaskManager { get set }
-    
-    var sections: [Section] { get }
-    
-}
+open class TaskDetailViewModel {
 
-open class TaskDetailViewModel: ITaskDetailViewModel {
-
-    public typealias Section = AtolSettingsSection
-    
-    public typealias Row = AtolSettingsRow
-    
     open var cdTaskManager: CDTaskManager
     
-    open var sections: [Section<Row>] {
+    open var sections: [TaskSection] {
         
-        var sections: [AtolSettingsSection] = [
-            AtolSettingsSection(title: "sdfsf", rows: [
-                AtolSettingsDeviceRow(cdAtolDevice: self.cdTaskManager)
+        var sections: [TaskSection] = [
+            TaskSection(title: "sdfsf", rows: [
+                TaskOperationRow()
             
             ])
         ]

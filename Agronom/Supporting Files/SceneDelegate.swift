@@ -26,6 +26,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.rootViewController = appTabBarViewController
         
         
+        let mainViewController = self.mainViewController()
+        
         let taskListViewController = self.taskListViewController()
         
         let operationListViewController = self.operationListViewController()
@@ -38,7 +40,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let workerListViewController = self.workerListViewController()
         
-        appTabBarViewController.setViewControllers([taskListViewController, operationListViewController, vehicleListViewController, toolListViewController, fieldListViewController, workerListViewController], animated: false)
+        appTabBarViewController.setViewControllers([mainViewController,
+                                                    taskListViewController,
+                                                    operationListViewController,
+                                                    vehicleListViewController,
+                                                    toolListViewController,
+                                                    fieldListViewController,
+                                                    workerListViewController], animated: false)
         
         appTabBarViewController.selectedIndex = 0
         
@@ -47,13 +55,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
         
     }
+    
+    func mainViewController() -> UIViewController {
+        
+        let mainViewController = MainViewController()
+        
+        let mainNavigationController = UINavigationController(rootViewController: mainViewController)
+        mainNavigationController.tabBarItem = UITabBarItem(title: "Главная", image: nil, tag: 0)
+        
+        return mainNavigationController
+        
+    }
 
     func taskListViewController() -> UIViewController {
         
         let taskListViewController = TaskListViewController()
 
         let taskNavigationController = UINavigationController(rootViewController: taskListViewController)
-        taskNavigationController.tabBarItem = UITabBarItem(title: "Задачи", image: nil, tag: 0)
+        taskNavigationController.tabBarItem = UITabBarItem(title: "Задачи", image: nil, tag: 1)
         
         return taskNavigationController
         
@@ -65,7 +84,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         let operationNavigationController = UINavigationController(rootViewController: operationListViewController)
-        operationNavigationController.tabBarItem = UITabBarItem(title: "Операции", image: nil, tag: 1)
+        operationNavigationController.tabBarItem = UITabBarItem(title: "Операции", image: nil, tag: 2)
         
         return operationNavigationController
         
@@ -76,7 +95,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vehicleListViewController = VehicleListViewController()
         
         let vehicleNavigationController = UINavigationController(rootViewController: vehicleListViewController)
-        vehicleNavigationController.tabBarItem = UITabBarItem(title: "Механика", image: nil, tag: 2)
+        vehicleNavigationController.tabBarItem = UITabBarItem(title: "Механика", image: nil, tag: 3)
         
         return vehicleNavigationController
         
@@ -87,7 +106,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let toolListViewController = ToolListViewController()
         
         let toolNavigationController = UINavigationController(rootViewController: toolListViewController)
-        toolNavigationController.tabBarItem = UITabBarItem(title: "Оборудование", image: nil, tag: 3)
+        toolNavigationController.tabBarItem = UITabBarItem(title: "Оборудование", image: nil, tag: 4)
         
         return toolNavigationController
         
@@ -98,7 +117,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let fieldListViewController = FieldListViewController()
         
         let fieldNavigationController = UINavigationController(rootViewController: fieldListViewController)
-        fieldNavigationController.tabBarItem = UITabBarItem(title: "Поля", image: nil, tag: 4)
+        fieldNavigationController.tabBarItem = UITabBarItem(title: "Поля", image: nil, tag: 5)
         
         return fieldNavigationController
         
@@ -109,7 +128,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let workerListViewController = WorkerListViewController()
         
         let workerNavigationController = UINavigationController(rootViewController: workerListViewController)
-        workerNavigationController.tabBarItem = UITabBarItem(title: "Работники", image: nil, tag: 5)
+        workerNavigationController.tabBarItem = UITabBarItem(title: "Работники", image: nil, tag: 6)
         
         return workerNavigationController
         

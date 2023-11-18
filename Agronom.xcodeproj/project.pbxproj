@@ -61,6 +61,11 @@
 		1069CDA12B080E8400C3349E /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069CDA02B080E8400C3349E /* TaskDetailViewController.swift */; };
 		1069CDA32B080F5D00C3349E /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069CDA22B080F5D00C3349E /* TaskDetailViewModel.swift */; };
 		1069CDA52B080FA200C3349E /* TaskDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1069CDA42B080FA200C3349E /* TaskDetailSection.swift */; };
+		10C811AB2B088EE7008FDD86 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C811AA2B088EE7008FDD86 /* MainViewController.swift */; };
+		10C811AD2B088F80008FDD86 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C811AC2B088F80008FDD86 /* MainViewModel.swift */; };
+		10C811B02B088F93008FDD86 /* MainViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C811AF2B088F93008FDD86 /* MainViewSection.swift */; };
+		10C811B32B0890A4008FDD86 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C811B12B0890A4008FDD86 /* TitleCell.swift */; };
+		10C811B42B0890A4008FDD86 /* TitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C811B22B0890A4008FDD86 /* TitleCell.xib */; };
 		A0A4D97B60485B32D36C139E /* Pods_Agronom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D740B9B743504471FC8D11D /* Pods_Agronom.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +126,11 @@
 		1069CDA02B080E8400C3349E /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		1069CDA22B080F5D00C3349E /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
 		1069CDA42B080FA200C3349E /* TaskDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailSection.swift; sourceTree = "<group>"; };
+		10C811AA2B088EE7008FDD86 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		10C811AC2B088F80008FDD86 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		10C811AF2B088F93008FDD86 /* MainViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewSection.swift; sourceTree = "<group>"; };
+		10C811B12B0890A4008FDD86 /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
+		10C811B22B0890A4008FDD86 /* TitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleCell.xib; sourceTree = "<group>"; };
 		5D740B9B743504471FC8D11D /* Pods_Agronom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Agronom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF60AAB00787BD6B4FB75AA /* Pods-Agronom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agronom.debug.xcconfig"; path = "Target Support Files/Pods-Agronom/Pods-Agronom.debug.xcconfig"; sourceTree = "<group>"; };
 		C7CA0B3F7F6CF7C542E9F39B /* Pods-Agronom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agronom.release.xcconfig"; path = "Target Support Files/Pods-Agronom/Pods-Agronom.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +222,7 @@
 			children = (
 				106858BF2B07CDF3001FA515 /* AppTabViewController.swift */,
 				106858E52B07D733001FA515 /* ListViewController.swift */,
+				10C811AE2B088F89008FDD86 /* MainViewController */,
 				106859162B07FE35001FA515 /* WorkerListViewController */,
 				10F1A6562B0802BA003FCB81 /* FIELD MODULE */,
 				106859042B07F731001FA515 /* ToolListViewController */,
@@ -277,6 +288,8 @@
 				106859112B07FA39001FA515 /* FieldCell.xib */,
 				1068591B2B07FF4C001FA515 /* WorkerCell.swift */,
 				1068591C2B07FF4C001FA515 /* WorkerCell.xib */,
+				10C811B12B0890A4008FDD86 /* TitleCell.swift */,
+				10C811B22B0890A4008FDD86 /* TitleCell.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -352,6 +365,16 @@
 				1069CDA42B080FA200C3349E /* TaskDetailSection.swift */,
 			);
 			path = TaskDetailViewController;
+			sourceTree = "<group>";
+		};
+		10C811AE2B088F89008FDD86 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				10C811AA2B088EE7008FDD86 /* MainViewController.swift */,
+				10C811AC2B088F80008FDD86 /* MainViewModel.swift */,
+				10C811AF2B088F93008FDD86 /* MainViewSection.swift */,
+			);
+			path = MainViewController;
 			sourceTree = "<group>";
 		};
 		10F1A6562B0802BA003FCB81 /* FIELD MODULE */ = {
@@ -443,6 +466,7 @@
 				106859012B07F4D5001FA515 /* VehicleCell.xib in Resources */,
 				1068590A2B07F849001FA515 /* ToolCell.xib in Resources */,
 				106859132B07FA39001FA515 /* FieldCell.xib in Resources */,
+				10C811B42B0890A4008FDD86 /* TitleCell.xib in Resources */,
 				106858E42B07D2A0001FA515 /* TaskCell.xib in Resources */,
 				106858AE2B07CA7D001FA515 /* LaunchScreen.storyboard in Resources */,
 				106858AB2B07CA7D001FA515 /* Assets.xcassets in Resources */,
@@ -500,7 +524,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10C811AD2B088F80008FDD86 /* MainViewModel.swift in Sources */,
+				10C811B32B0890A4008FDD86 /* TitleCell.swift in Sources */,
 				106858EC2B07ED11001FA515 /* OperationListViewModel.swift in Sources */,
+				10C811AB2B088EE7008FDD86 /* MainViewController.swift in Sources */,
 				106858B82B07CBA9001FA515 /* Agronom.xcdatamodeld in Sources */,
 				106858E32B07D2A0001FA515 /* TaskCell.swift in Sources */,
 				106858FA2B07F47F001FA515 /* VehicleListViewController.swift in Sources */,
@@ -519,6 +546,7 @@
 				106858DF2B07D0D7001FA515 /* CDTaskManager + Extensions.swift in Sources */,
 				106859002B07F4D5001FA515 /* VehicleCell.swift in Sources */,
 				1069CDA32B080F5D00C3349E /* TaskDetailViewModel.swift in Sources */,
+				10C811B02B088F93008FDD86 /* MainViewSection.swift in Sources */,
 				106859122B07FA39001FA515 /* FieldCell.swift in Sources */,
 				106858C02B07CDF3001FA515 /* AppTabViewController.swift in Sources */,
 				106858CC2B07CF48001FA515 /* Storage.swift in Sources */,
