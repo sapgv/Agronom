@@ -46,6 +46,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="heightConstraint" destination="ddp-Ri-OGG" id="8gT-lG-0LE"/>
                 <outlet property="textView" destination="sqF-6T-T9O" id="sBa-NC-fRg"/>
                 <outlet property="titleLabel" destination="wmp-DI-jGj" id="I7S-RM-6Vt"/>
             </connections>

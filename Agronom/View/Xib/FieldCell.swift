@@ -21,6 +21,7 @@ class FieldCell: UITableViewCell {
     func setup(item: CDField) {
         self.titleLabel.text = item.name
         self.plantedLabel.text = item.planted
+        self.plantedLabel.isHidden = item.planted.isEmpty
         self.sizeLabel.text = "\(item.size) Га"
     }
     

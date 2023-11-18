@@ -1,5 +1,5 @@
 //
-//  TaskDetailViewController.swift
+//  TaskEditViewController.swift
 //  Agronom
 //
 //  Created by Grigory Sapogov on 18.11.2023.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class TaskDetailViewController: ListViewController {
+final class TaskEditViewController: ListViewController {
     
-    var viewModel: TaskDetailViewModel?
+    var viewModel: TaskEditViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,10 +17,25 @@ final class TaskDetailViewController: ListViewController {
         self.setupTableView()
         self.layout()
         self.setupViewModel()
+        self.setupNavigationButton()
     }
     
     private func setupViewModel() {
         
+        
+    }
+    
+    private func setupNavigationButton() {
+        
+        let button = UIBarButtonItem(title: "Сохранить", style: .plain, target: self, action: #selector(save))
+        self.navigationItem.rightBarButtonItem = button
+        
+    }
+    
+    @objc
+    private func save() {
+        
+        self.viewModel?.save()
         
     }
     
@@ -33,24 +48,13 @@ final class TaskDetailViewController: ListViewController {
         self.tableView.register(UINib(nibName: "FieldCell", bundle: nil), forCellReuseIdentifier: "FieldCell")
         self.tableView.register(UINib(nibName: "VehicleCell", bundle: nil), forCellReuseIdentifier: "VehicleCell")
         self.tableView.register(UINib(nibName: "WorkerCell", bundle: nil), forCellReuseIdentifier: "WorkerCell")
-    }
-    
-    private func layout() {
-        
-        self.view.addSubview(self.tableView)
-        
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        self.tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
+        self.tableView.register(UINib(nibName: "TaskParameterCell", bundle: nil), forCellReuseIdentifier: "TaskParameterCell")
+        self.tableView.register(UINib(nibName: "EditTextCell", bundle: nil), forCellReuseIdentifier: "EditTextCell")
     }
     
 }
 
-extension TaskDetailViewController {
+extension TaskEditViewController {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.viewModel?.sections.count ?? 0
@@ -138,6 +142,70 @@ extension TaskDetailViewController {
                 return cell
             }
             
+        case is TaskDepthRow:
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskParameterCell", for: indexPath) as? TaskParameterCell else {
+                return UITableViewCell()
+            }
+            
+            cell.titleLabel.text = "Глубина см"
+            cell.textField.text = "\(self.viewModel?.cdTaskManager.depth ?? 0)"
+            
+            cell.textChanged = { [weak self] text in
+                guard let value = text?.int else { return }
+                self?.viewModel?.cdTaskManager.depth = value.int16
+            }
+            
+            return cell
+            
+        case is TaskSpeedRow:
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskParameterCell", for: indexPath) as? TaskParameterCell else {
+                return UITableViewCell()
+            }
+            
+            cell.titleLabel.text = "Рабочая скорость км/ч"
+            cell.textField.text = "\(self.viewModel?.cdTaskManager.speed ?? 0)"
+            
+            cell.textChanged = { [weak self] text in
+                guard let value = text?.int else { return }
+                self?.viewModel?.cdTaskManager.speed = value.int16
+            }
+            
+            return cell
+
+        case is TaskLiquidRow:
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskParameterCell", for: indexPath) as? TaskParameterCell else {
+                return UITableViewCell()
+            }
+            
+            cell.titleLabel.text = "Расход рабочего раствора л/га"
+            cell.textField.text = "\(self.viewModel?.cdTaskManager.liquid ?? 0)"
+            
+            cell.textChanged = { [weak self] text in
+                guard let value = text?.int else { return }
+                self?.viewModel?.cdTaskManager.liquid = value.int16
+            }
+            
+            return cell
+            
+        case is TaskDescriptionRow:
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "EditTextCell", for: indexPath) as? EditTextCell else {
+                return UITableViewCell()
+            }
+            
+            cell.titleLabel.isHidden = true
+            cell.textView.text = self.viewModel?.cdTaskManager.descriptionText
+            
+            cell.growingDelegate = self
+            cell.editChaged = { text in
+                self.viewModel?.cdTaskManager.descriptionText = text
+            }
+            cell.heightConstraint.constant = 100
+            return cell
+            
         default:
             return UITableViewCell()
         }
@@ -146,7 +214,7 @@ extension TaskDetailViewController {
     }
 }
 
-extension TaskDetailViewController {
+extension TaskEditViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

@@ -8,16 +8,46 @@
 import UIKit
 import CoreData
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, GrowingTableViewCellProtocol {
     
     var tableView: UITableView!
     
     var refreshControll: UIRefreshControl?
     
+    var bottomConstraint: NSLayoutConstraint?
+    
+    private var tapGestureRecognizer: UITapGestureRecognizer?
+    
+    private var isKeyboardNotification = false
+    
     public lazy var controller: NSFetchedResultsController<NSManagedObject>? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func layout() {
+        
+        self.view.addSubview(self.tableView)
+        
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        self.tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        self.bottomConstraint = self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
+        self.bottomConstraint?.isActive = true
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.addKeyboard()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
     }
     
     func object(forIndexPath indexPath: IndexPath) -> Any? {
@@ -32,6 +62,54 @@ class ListViewController: UIViewController {
             let fetchError = error as NSError
             Log.debug("CoreData", "Unable to Perform Fetch Request" + "\n" + fetchError.localizedDescription)
         }
+    }
+    
+    func addKeyboard() {
+        guard !self.isKeyboardNotification else { return }
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGestureRecognizer!.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGestureRecognizer!)
+    }
+    
+    @objc func hideKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func removeKeyboard() {
+        NotificationCenter.default.removeObserver(self)
+        tapGestureRecognizer = nil
+        isKeyboardNotification = false
+    }
+    
+    @objc
+    func keyboardWillAppear(notification: Notification) {
+        
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
+        
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        let value = keyboardSize.height - self.view.safeAreaInsets.bottom
+
+        bottomConstraint?.constant = -value
+        
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc
+    func keyboardWillHide(notification: Notification) {
+        
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
+
+        bottomConstraint?.constant = 0
+        
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
+        
     }
     
 }

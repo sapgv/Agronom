@@ -33,6 +33,10 @@ extension String {
         return UUID().uuidString
     }
     
+    var int: Int? {
+        Int(self)
+    }
+    
 }
 
 extension Error {

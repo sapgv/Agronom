@@ -56,10 +56,13 @@ final class TaskListViewController: ListViewController {
     private func add() {
         
         let viewContext = Model.coreData.createChildContextFromCoordinator(for: .mainQueueConcurrencyType, mergePolicy: .mergeByPropertyObjectTrump)
-        let cdTaskManager = CDTaskManager(context: viewContext)
-        let viewModel = TaskDetailViewModel(cdTaskManager: cdTaskManager, viewContext: viewContext)
         
-        let viewController = TaskDetailViewController()
+        let cdTaskManager = CDTaskManager(context: viewContext)
+        cdTaskManager.id = Int16.random(in: 0...Int16.max)
+        
+        let viewModel = TaskEditViewModel(cdTaskManager: cdTaskManager, viewContext: viewContext)
+        
+        let viewController = TaskEditViewController()
         viewController.viewModel = viewModel
         
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -96,19 +99,6 @@ final class TaskListViewController: ListViewController {
     }
     
     
-    private func layout() {
-        
-        self.view.addSubview(self.tableView)
-        
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        self.tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let task = self.object(forIndexPath: indexPath) as? CDTaskManager else { return UITableViewCell() }
@@ -123,5 +113,33 @@ final class TaskListViewController: ListViewController {
         
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(style: .normal, title: "Редактировать") { [weak self] _, _, completion in
+            guard let cdItem = self?.object(forIndexPath: indexPath) as? CDTaskManager else { return }
+            self?.edit(task: cdItem)
+            completion(true)
+        }
+        action.backgroundColor = .systemYellow
+        
+        return UISwipeActionsConfiguration(actions: [action])
+        
+    }
+    
+    func edit(task: CDTaskManager) {
+        
+        let viewContext = Model.coreData.createChildContextFromCoordinator(for: .mainQueueConcurrencyType, mergePolicy: .mergeByPropertyObjectTrump)
+        
+        let cdTaskManager = viewContext.objectInContext(CDTaskManager.self, objectID: task.objectID)!
+        cdTaskManager.id = Int16.random(in: 0...Int16.max)
+        
+        let viewModel = TaskEditViewModel(cdTaskManager: cdTaskManager, viewContext: viewContext)
+        
+        let viewController = TaskEditViewController()
+        viewController.viewModel = viewModel
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
+    }
     
 }

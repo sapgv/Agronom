@@ -12,6 +12,7 @@ class EditTextCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     weak var growingDelegate: GrowingTableViewCellProtocol?
     
     var editChaged: ((String?) -> Void)? = nil

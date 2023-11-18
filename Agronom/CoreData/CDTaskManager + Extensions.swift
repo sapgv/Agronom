@@ -8,7 +8,16 @@
 import Foundation
 
 extension CDTaskManager {
-    
+
+    var cdImages: [CDImage] {
+        get {
+            self.images_?.array as? [CDImage] ?? []
+        }
+        set {
+            self.images_ = NSOrderedSet(array: newValue)
+        }
+    }
+ 
     func fill(item: TaskManager) {
         self.id = item.id.int16
         self.title = item.title

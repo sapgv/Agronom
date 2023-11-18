@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OperationEditViewController: ListViewController, GrowingTableViewCellProtocol {
+final class OperationEditViewController: ListViewController {
     
     var viewModel: OperationEditViewModel?
     
@@ -24,19 +24,6 @@ final class OperationEditViewController: ListViewController, GrowingTableViewCel
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UINib(nibName: "EditTextCell", bundle: nil), forCellReuseIdentifier: "EditTextCell")
-    }
-    
-    private func layout() {
-        
-        self.view.addSubview(self.tableView)
-        
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        self.tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
     }
     
     private func setupNavigationButton() {
@@ -94,7 +81,6 @@ extension OperationEditViewController {
             cell.editChaged = { text in
                 self.viewModel?.cdItem.name = text
             }
-//            cell.titleLabel.isHidden = true
             
             return cell
             
@@ -109,7 +95,6 @@ extension OperationEditViewController {
             cell.editChaged = { text in
                 self.viewModel?.cdItem.descriptionText = text
             }
-//            cell.titleLabel.isHidden = true
             
             return cell
             

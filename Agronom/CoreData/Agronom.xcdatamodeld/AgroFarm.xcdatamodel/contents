@@ -21,17 +21,20 @@
         <attribute name="datetime_completed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="datetime_planned" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="datetime_started" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="depth" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="descriptionText" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="liquid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="odometer_end" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="odometer_start" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="report" optional="YES" attributeType="String"/>
+        <attribute name="speed" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="cdField" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDField" inverseName="cdTask" inverseEntity="CDField"/>
         <relationship name="cdOperation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDTaskOperation" inverseName="cdTask" inverseEntity="CDTaskOperation"/>
         <relationship name="cdVehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDVehicle" inverseName="cdTask" inverseEntity="CDVehicle"/>
         <relationship name="cdWorker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWorker" inverseName="cdTask" inverseEntity="CDWorker"/>
-        <relationship name="images_" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDImage" inverseName="cdTask" inverseEntity="CDImage"/>
+        <relationship name="images_" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CDImage" inverseName="cdTask" inverseEntity="CDImage"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>

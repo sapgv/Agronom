@@ -1,5 +1,5 @@
 //
-//  WorkerListViewController.swift
+//  VehicleListViewController.swift
 //  Agronom
 //
 //  Created by Grigory Sapogov on 18.11.2023.
@@ -8,15 +8,15 @@
 import UIKit
 import CoreData
 
-final class WorkerListViewController: ListViewController {
+final class VehicleListViewController: ListViewController {
     
-    var viewModel: WorkerListViewModel? = WorkerListViewModel()
+    var viewModel: VehicleListViewModel? = VehicleListViewModel()
     
-    var selectCompletion: ((CDWorker, UIViewController) -> Void)? = nil
+    var selectCompletion: ((CDVehicle, UIViewController) -> Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Работники"
+        self.title = "Техника"
         self.setupTableView()
         self.setupController()
         self.layout()
@@ -50,7 +50,7 @@ final class WorkerListViewController: ListViewController {
         self.tableView = UITableView(frame: .zero, style: .insetGrouped)
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.register(UINib(nibName: "WorkerCell", bundle: nil), forCellReuseIdentifier: "WorkerCell")
+        self.tableView.register(UINib(nibName: "VehicleCell", bundle: nil), forCellReuseIdentifier: "VehicleCell")
     }
     
     
@@ -72,30 +72,17 @@ final class WorkerListViewController: ListViewController {
     
     private func setupController() {
         
-        self.controller = Model.coreData.fetchedResultController(entity: CDWorker.entityName, sectionKey: nil, cacheName: nil, sortKey: "id", sortKeys: nil, sortDescriptors: nil, fetchPredicates: nil, ascending: true, batchSize: 50, fetchContext: nil)
+        self.controller = Model.coreData.fetchedResultController(entity: CDVehicle.entityName, sectionKey: nil, cacheName: nil, sortKey: "id", sortKeys: nil, sortDescriptors: nil, fetchPredicates: nil, ascending: true, batchSize: 50, fetchContext: nil)
         self.controller?.delegate = self
         
     }
     
     
-    private func layout() {
-        
-        self.view.addSubview(self.tableView)
-        
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        self.tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let item = self.object(forIndexPath: indexPath) as? CDWorker else { return UITableViewCell() }
+        guard let item = self.object(forIndexPath: indexPath) as? CDVehicle else { return UITableViewCell() }
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerCell", for: indexPath) as? WorkerCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "VehicleCell", for: indexPath) as? VehicleCell else {
             return UITableViewCell()
         }
         
@@ -111,10 +98,11 @@ final class WorkerListViewController: ListViewController {
             tableView.deselectRow(at: indexPath, animated: true)
         }
         
-        guard let item = self.object(forIndexPath: indexPath) as? CDWorker else { return }
+        guard let item = self.object(forIndexPath: indexPath) as? CDVehicle else { return }
         
         selectCompletion?(item, self)
         
     }
+    
     
 }

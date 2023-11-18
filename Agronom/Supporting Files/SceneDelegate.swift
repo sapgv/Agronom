@@ -40,6 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let workerListViewController = self.workerListViewController()
         
+        
         appTabBarViewController.setViewControllers([mainViewController,
                                                     taskListViewController,
                                                     operationListViewController,
