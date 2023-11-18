@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 public extension Thread {
     class func run(execute: @escaping @convention(block) () -> Void) {
@@ -86,6 +87,11 @@ extension Optional where Wrapped == String {
         return self.isEmpty ? value : self
     }
     
+    var isEmpty: Bool {
+        guard let self = self else { return true }
+        return self.isEmpty
+    }
+    
 }
 
 extension UINavigationBar {
@@ -113,6 +119,15 @@ extension UITableView {
     
     static func restoreAppearance() {
         UITableView.appearance().sectionHeaderTopPadding = 0.0
+    }
+    
+}
+
+extension NSManagedObjectContext {
+    
+    func objectInContext<T: NSManagedObject>(_ type: T.Type, objectID: NSManagedObjectID?) -> T? {
+        guard let objectID = objectID else { return nil }
+        return self.object(with: objectID) as? T
     }
     
 }

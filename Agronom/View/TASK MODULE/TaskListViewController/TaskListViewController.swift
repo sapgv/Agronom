@@ -22,6 +22,7 @@ final class TaskListViewController: ListViewController {
         self.setupRefreshControll()
         self.setupViewModel()
         self.updateControllerResults()
+        self.setupNavigationButton()
     }
     
     private func setupViewModel() {
@@ -51,7 +52,26 @@ final class TaskListViewController: ListViewController {
         self.tableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "TaskCell")
     }
     
+    @objc
+    private func addTask() {
+        
+        let viewContext = Model.coreData.createChildContextFromCoordinator(for: .mainQueueConcurrencyType, mergePolicy: .mergeByPropertyObjectTrump)
+        let cdTaskManager = CDTaskManager(context: viewContext)
+        let viewModel = TaskDetailViewModel(cdTaskManager: cdTaskManager, viewContext: viewContext)
+        
+        let viewController = TaskDetailViewController()
+        viewController.viewModel = viewModel
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
+    }
     
+    private func setupNavigationButton() {
+        
+        let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addTask))
+        self.navigationItem.rightBarButtonItem = addButton
+        
+    }
     
     private func setupRefreshControll() {
         

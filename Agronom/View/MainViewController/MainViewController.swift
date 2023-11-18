@@ -16,8 +16,6 @@ final class MainViewController: ListViewController {
         self.title = "Главная"
         self.setupTableView()
         self.layout()
-        self.updateData()
-        self.setupRefreshControll()
         self.setupViewModel()
         self.updateControllerResults()
     }
@@ -33,24 +31,6 @@ final class MainViewController: ListViewController {
         self.tableView.delegate = self
         self.tableView.register(UINib(nibName: "TitleCell", bundle: nil), forCellReuseIdentifier: "TitleCell")
     }
-    
-    
-    
-    private func setupRefreshControll() {
-        
-        self.refreshControll = UIRefreshControl()
-        self.refreshControll?.addTarget(self, action: #selector(updateData), for: .valueChanged)
-        self.tableView.refreshControl = refreshControll
-        
-    }
-    
-    @objc
-    private func updateData() {
-        
-//        self.viewModel?.updateData()
-        
-    }
-    
     
     private func layout() {
         

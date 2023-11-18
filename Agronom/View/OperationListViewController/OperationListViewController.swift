@@ -12,6 +12,8 @@ final class OperationListViewController: ListViewController {
     
     var viewModel: OperationListViewModel? = OperationListViewModel()
     
+    var selectCompletion: ((CDTaskOperation, UIViewController) -> Void)? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Операции"
@@ -100,6 +102,18 @@ final class OperationListViewController: ListViewController {
         cell.setup(item: item)
         
         return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        guard let item = self.object(forIndexPath: indexPath) as? CDTaskOperation else { return }
+        
+        selectCompletion?(item, self)
         
     }
     

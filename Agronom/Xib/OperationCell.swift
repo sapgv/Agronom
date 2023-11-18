@@ -21,9 +21,7 @@ class OperationCell: UITableViewCell {
     func setup(item: CDTaskOperation) {
         self.titleLabel.text = item.name
         self.descriptionLabel.text = item.descriptionText
-        
-        
+        self.descriptionLabel.isHidden = item.descriptionText.isEmpty
     }
-    
     
 }

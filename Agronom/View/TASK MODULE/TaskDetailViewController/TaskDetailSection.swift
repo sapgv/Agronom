@@ -37,7 +37,31 @@ open class TaskSectionRow {
 open class TaskOperationRow: TaskSectionRow {
 
     public override var cellType: UITableViewCell.Type {
-        UITableViewCell.self
+        OperationCell.self
+    }
+    
+}
+
+open class TaskFieldRow: TaskSectionRow {
+
+    public override var cellType: UITableViewCell.Type {
+        FieldCell.self
+    }
+    
+}
+
+open class TaskVehicleRow: TaskSectionRow {
+
+    public override var cellType: UITableViewCell.Type {
+        VehicleCell.self
+    }
+    
+}
+
+open class TaskWorkerRow: TaskSectionRow {
+
+    public override var cellType: UITableViewCell.Type {
+        VehicleCell.self
     }
     
 }
