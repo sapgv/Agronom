@@ -12,6 +12,8 @@ final class VehicleListViewController: ListViewController {
     
     var viewModel: VehicleListViewModel? = VehicleListViewModel()
     
+    var selectCompletion: ((CDVehicle, UIViewController) -> Void)? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Техника"
@@ -100,6 +102,18 @@ final class VehicleListViewController: ListViewController {
         cell.setup(item: item)
         
         return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        guard let item = self.object(forIndexPath: indexPath) as? CDVehicle else { return }
+        
+        selectCompletion?(item, self)
         
     }
     

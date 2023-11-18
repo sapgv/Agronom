@@ -12,6 +12,8 @@ final class WorkerListViewController: ListViewController {
     
     var viewModel: WorkerListViewModel? = WorkerListViewModel()
     
+    var selectCompletion: ((CDWorker, UIViewController) -> Void)? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Работники"
@@ -103,5 +105,16 @@ final class WorkerListViewController: ListViewController {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        guard let item = self.object(forIndexPath: indexPath) as? CDWorker else { return }
+        
+        selectCompletion?(item, self)
+        
+    }
     
 }

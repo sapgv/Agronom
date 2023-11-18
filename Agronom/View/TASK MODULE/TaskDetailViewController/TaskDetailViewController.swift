@@ -32,6 +32,7 @@ final class TaskDetailViewController: ListViewController {
         self.tableView.register(UINib(nibName: "OperationCell", bundle: nil), forCellReuseIdentifier: "OperationCell")
         self.tableView.register(UINib(nibName: "TitleCell", bundle: nil), forCellReuseIdentifier: "TitleCell")
         self.tableView.register(UINib(nibName: "FieldCell", bundle: nil), forCellReuseIdentifier: "FieldCell")
+        self.tableView.register(UINib(nibName: "VehicleCell", bundle: nil), forCellReuseIdentifier: "VehicleCell")
         self.tableView.register(UINib(nibName: "WorkerCell", bundle: nil), forCellReuseIdentifier: "WorkerCell")
     }
     
@@ -162,11 +163,66 @@ extension TaskDetailViewController {
         case is TaskOperationRow:
             
             let viewController = OperationListViewController()
-            viewController.selectCompletion = { [weak self] cdOperation, vc in
+            viewController.selectCompletion = { [weak self] cdItem, vc in
                 
                 guard let self = self else { return }
                 
-                self.viewModel?.cdTaskManager.cdOperation = self.viewModel?.viewContext.objectInContext(CDTaskOperation.self, objectID: cdOperation.objectID)
+                self.viewModel?.cdTaskManager.cdOperation = self.viewModel?.viewContext.objectInContext(CDTaskOperation.self, objectID: cdItem.objectID)
+                
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                
+                vc.dismiss(animated: true)
+                
+            }
+            let navigationController = UINavigationController(rootViewController: viewController)
+            
+            self.present(navigationController, animated: true)
+            
+        case is TaskFieldRow:
+            
+            let viewController = FieldListViewController()
+            viewController.selectCompletion = { [weak self] cdItem, vc in
+                
+                guard let self = self else { return }
+                
+                self.viewModel?.cdTaskManager.cdField = self.viewModel?.viewContext.objectInContext(CDField.self, objectID: cdItem.objectID)
+                
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                
+                vc.dismiss(animated: true)
+                
+            }
+            let navigationController = UINavigationController(rootViewController: viewController)
+            
+            self.present(navigationController, animated: true)
+            
+            
+        case is TaskVehicleRow:
+            
+            let viewController = VehicleListViewController()
+            viewController.selectCompletion = { [weak self] cdItem, vc in
+                
+                guard let self = self else { return }
+                
+                self.viewModel?.cdTaskManager.cdVehicle = self.viewModel?.viewContext.objectInContext(CDVehicle.self, objectID: cdItem.objectID)
+                
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                
+                vc.dismiss(animated: true)
+                
+            }
+            let navigationController = UINavigationController(rootViewController: viewController)
+            
+            self.present(navigationController, animated: true)
+            
+        case is TaskWorkerRow:
+            
+            let viewController = WorkerListViewController()
+            viewController.selectCompletion = { [weak self] cdItem, vc in
+                
+                guard let self = self else { return }
+                
+                self.viewModel?.cdTaskManager.cdWorker = self.viewModel?.viewContext.objectInContext(CDWorker.self, objectID: cdItem.objectID)
                 
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 

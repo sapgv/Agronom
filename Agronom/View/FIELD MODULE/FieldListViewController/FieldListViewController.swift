@@ -12,6 +12,8 @@ final class FieldListViewController: ListViewController {
     
     var viewModel: FieldListViewModel? = FieldListViewModel()
     
+    var selectCompletion: ((CDField, UIViewController) -> Void)? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Поля"
@@ -103,5 +105,16 @@ final class FieldListViewController: ListViewController {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        guard let item = self.object(forIndexPath: indexPath) as? CDField else { return }
+        
+        selectCompletion?(item, self)
+        
+    }
     
 }
