@@ -47,6 +47,7 @@ final class TaskEditViewController: ListViewController {
         self.tableView.register(UINib(nibName: "TitleCell", bundle: nil), forCellReuseIdentifier: "TitleCell")
         self.tableView.register(UINib(nibName: "FieldCell", bundle: nil), forCellReuseIdentifier: "FieldCell")
         self.tableView.register(UINib(nibName: "VehicleCell", bundle: nil), forCellReuseIdentifier: "VehicleCell")
+        self.tableView.register(UINib(nibName: "ToolCell", bundle: nil), forCellReuseIdentifier: "ToolCell")
         self.tableView.register(UINib(nibName: "WorkerCell", bundle: nil), forCellReuseIdentifier: "WorkerCell")
         self.tableView.register(UINib(nibName: "TaskParameterCell", bundle: nil), forCellReuseIdentifier: "TaskParameterCell")
         self.tableView.register(UINib(nibName: "EditTextCell", bundle: nil), forCellReuseIdentifier: "EditTextCell")
@@ -123,6 +124,21 @@ extension TaskEditViewController {
             else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "TitleCell", for: indexPath) as? TitleCell else { return UITableViewCell() }
                 cell.setup(title: "Выберите транспорт")
+                cell.accessoryType = .disclosureIndicator
+                return cell
+            }
+            
+        case is TaskToolRow:
+            
+            if let cdTool = viewModel.cdTaskManager.cdTool {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToolCell", for: indexPath) as? ToolCell else { return UITableViewCell() }
+                cell.setup(item: cdTool)
+                cell.accessoryType = .disclosureIndicator
+                return cell
+            }
+            else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "TitleCell", for: indexPath) as? TitleCell else { return UITableViewCell() }
+                cell.setup(title: "Выберите оборудование")
                 cell.accessoryType = .disclosureIndicator
                 return cell
             }
@@ -272,6 +288,24 @@ extension TaskEditViewController {
                 guard let self = self else { return }
                 
                 self.viewModel?.cdTaskManager.cdVehicle = self.viewModel?.viewContext.objectInContext(CDVehicle.self, objectID: cdItem.objectID)
+                
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                
+                vc.dismiss(animated: true)
+                
+            }
+            let navigationController = UINavigationController(rootViewController: viewController)
+            
+            self.present(navigationController, animated: true)
+            
+        case is TaskToolRow:
+            
+            let viewController = ToolListViewController()
+            viewController.selectCompletion = { [weak self] cdItem, vc in
+                
+                guard let self = self else { return }
+                
+                self.viewModel?.cdTaskManager.cdTool = self.viewModel?.viewContext.objectInContext(CDTool.self, objectID: cdItem.objectID)
                 
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 

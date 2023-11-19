@@ -26,6 +26,7 @@ class TaskEditViewModel {
                 TaskFieldRow(),
                 TaskOperationRow(),
                 TaskVehicleRow(),
+                TaskToolRow(),
                 TaskWorkerRow()
             ]),
             

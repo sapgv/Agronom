@@ -12,6 +12,8 @@ final class ToolListViewController: ListViewController {
     
     var viewModel: ToolListViewModel? = ToolListViewModel()
     
+    var selectCompletion: ((CDTool, UIViewController) -> Void)? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Оборудование"
@@ -112,5 +114,16 @@ final class ToolListViewController: ListViewController {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        guard let item = self.object(forIndexPath: indexPath) as? CDTool else { return }
+        
+        selectCompletion?(item, self)
+        
+    }
     
 }

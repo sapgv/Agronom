@@ -39,6 +39,11 @@ class TaskVehicleRow: TaskSectionRow {
     
 }
 
+class TaskToolRow: TaskSectionRow {
+
+    
+}
+
 class TaskWorkerRow: TaskSectionRow {
 
     
