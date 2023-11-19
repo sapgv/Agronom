@@ -13,8 +13,19 @@ final class TaskDetailViewController: ListViewController {
     
     private let bottomView = {
         let view = UIView()
-        view.backgroundColor = .groupTableViewBackground
+        view.backgroundColor = .white
         return view
+    }()
+    
+    private let finishedTaskLabel = {
+        let label = UILabel()
+        label.text = "Задача завершена"
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textColor = .systemGreen
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        return label
     }()
     
     private let bottomStackView = {
@@ -117,7 +128,8 @@ final class TaskDetailViewController: ListViewController {
         
         self.startCheckListButton.isHidden = self.viewModel?.cdTaskManager.datetime_started != nil
         self.finishCheckListButton.isHidden = self.viewModel?.cdTaskManager.datetime_completed != nil || self.viewModel?.cdTaskManager.datetime_started == nil
-        
+     
+        self.finishedTaskLabel.isHidden = self.viewModel?.cdTaskManager.datetime_completed == nil
     }
     
     override func layout() {
@@ -131,6 +143,7 @@ final class TaskDetailViewController: ListViewController {
         self.bottomStackView.translatesAutoresizingMaskIntoConstraints = false
         self.startCheckListButton.translatesAutoresizingMaskIntoConstraints = false
         self.finishCheckListButton.translatesAutoresizingMaskIntoConstraints = false
+        self.finishedTaskLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -144,6 +157,7 @@ final class TaskDetailViewController: ListViewController {
         
         self.bottomStackView.addArrangedSubview(self.startCheckListButton)
         self.bottomStackView.addArrangedSubview(self.finishCheckListButton)
+        self.bottomStackView.addArrangedSubview(self.finishedTaskLabel)
         
         self.bottomStackView.leadingAnchor.constraint(equalTo: self.bottomView.leadingAnchor, constant: 8).isActive = true
         self.bottomStackView.topAnchor.constraint(equalTo: self.bottomView.topAnchor, constant: 8).isActive = true
