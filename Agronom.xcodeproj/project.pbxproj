@@ -80,6 +80,8 @@
 		10ED89142B09C57500DCCD86 /* VehicleEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED89132B09C57500DCCD86 /* VehicleEditViewController.swift */; };
 		10ED89172B09C72A00DCCD86 /* ToolEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED89162B09C72A00DCCD86 /* ToolEditViewModel.swift */; };
 		10ED89192B09C76D00DCCD86 /* ToolEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED89182B09C76D00DCCD86 /* ToolEditViewController.swift */; };
+		10ED891C2B09C8C800DCCD86 /* WorkerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED891B2B09C8C800DCCD86 /* WorkerEditViewController.swift */; };
+		10ED891E2B09C8D300DCCD86 /* WorkerEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED891D2B09C8D300DCCD86 /* WorkerEditViewModel.swift */; };
 		A0A4D97B60485B32D36C139E /* Pods_Agronom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D740B9B743504471FC8D11D /* Pods_Agronom.framework */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +161,8 @@
 		10ED89132B09C57500DCCD86 /* VehicleEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleEditViewController.swift; sourceTree = "<group>"; };
 		10ED89162B09C72A00DCCD86 /* ToolEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolEditViewModel.swift; sourceTree = "<group>"; };
 		10ED89182B09C76D00DCCD86 /* ToolEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolEditViewController.swift; sourceTree = "<group>"; };
+		10ED891B2B09C8C800DCCD86 /* WorkerEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerEditViewController.swift; sourceTree = "<group>"; };
+		10ED891D2B09C8D300DCCD86 /* WorkerEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerEditViewModel.swift; sourceTree = "<group>"; };
 		5D740B9B743504471FC8D11D /* Pods_Agronom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Agronom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF60AAB00787BD6B4FB75AA /* Pods-Agronom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agronom.debug.xcconfig"; path = "Target Support Files/Pods-Agronom/Pods-Agronom.debug.xcconfig"; sourceTree = "<group>"; };
 		C7CA0B3F7F6CF7C542E9F39B /* Pods-Agronom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agronom.release.xcconfig"; path = "Target Support Files/Pods-Agronom/Pods-Agronom.release.xcconfig"; sourceTree = "<group>"; };
@@ -458,6 +462,7 @@
 		106D47E82B09312400FC4660 /* WORKER MODULE */ = {
 			isa = PBXGroup;
 			children = (
+				10ED891A2B09C8B700DCCD86 /* WorkerEditViewController */,
 				106859162B07FE35001FA515 /* WorkerListViewController */,
 			);
 			path = "WORKER MODULE";
@@ -497,6 +502,15 @@
 				10ED89182B09C76D00DCCD86 /* ToolEditViewController.swift */,
 			);
 			path = ToolEditViewController;
+			sourceTree = "<group>";
+		};
+		10ED891A2B09C8B700DCCD86 /* WorkerEditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				10ED891D2B09C8D300DCCD86 /* WorkerEditViewModel.swift */,
+				10ED891B2B09C8C800DCCD86 /* WorkerEditViewController.swift */,
+			);
+			path = WorkerEditViewController;
 			sourceTree = "<group>";
 		};
 		10F1A6562B0802BA003FCB81 /* FIELD MODULE */ = {
@@ -664,6 +678,7 @@
 				10ED89192B09C76D00DCCD86 /* ToolEditViewController.swift in Sources */,
 				106858EE2B07ED4E001FA515 /* TaskOperation.swift in Sources */,
 				106859242B08019E001FA515 /* Field.swift in Sources */,
+				10ED891E2B09C8D300DCCD86 /* WorkerEditViewModel.swift in Sources */,
 				106858F42B07F162001FA515 /* CDField + Extensions.swift in Sources */,
 				106D47DF2B09102200FC4660 /* EditRow.swift in Sources */,
 				1068591D2B07FF4C001FA515 /* WorkerCell.swift in Sources */,
@@ -702,6 +717,7 @@
 				10ED89172B09C72A00DCCD86 /* ToolEditViewModel.swift in Sources */,
 				106859062B07F748001FA515 /* ToolListViewModel.swift in Sources */,
 				106D47D92B090FB000FC4660 /* OperationEditViewController.swift in Sources */,
+				10ED891C2B09C8C800DCCD86 /* WorkerEditViewController.swift in Sources */,
 				106858FD2B07F499001FA515 /* VehicleListViewModel.swift in Sources */,
 				106859152B07FDFF001FA515 /* WorkerListViewController.swift in Sources */,
 				106858F72B07F1DC001FA515 /* OperationCell.swift in Sources */,
