@@ -142,4 +142,27 @@ final class TaskListViewController: ListViewController {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        guard let task = self.object(forIndexPath: indexPath) as? CDTaskManager else { return }
+        
+        let viewContext = Model.coreData.createChildContextFromCoordinator(for: .mainQueueConcurrencyType, mergePolicy: .mergeByPropertyObjectTrump)
+        
+        let cdTaskManager = viewContext.objectInContext(CDTaskManager.self, objectID: task.objectID)!
+        cdTaskManager.id = Int16.random(in: 0...Int16.max)
+        
+        let viewModel = TaskDetailViewModel(cdTaskManager: cdTaskManager, viewContext: viewContext)
+        
+        let viewController = TaskDetailViewController()
+        viewController.viewModel = viewModel
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        
+    }
+    
 }
