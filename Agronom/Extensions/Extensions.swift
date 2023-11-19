@@ -65,6 +65,10 @@ extension Int {
         Int16(self)
     }
     
+    var int64: Int64 {
+        Int64(self)
+    }
+    
 }
 
 extension Dictionary where Key == String, Value == Any {

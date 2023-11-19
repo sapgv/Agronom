@@ -111,7 +111,7 @@ extension FieldEditViewController {
             
             cell.textChanged = { [weak self] text in
                 guard let value = text?.int else { return }
-                self?.viewModel?.cdItem.size = value.int16
+                self?.viewModel?.cdItem.size = value.int64
             }
             
             return cell

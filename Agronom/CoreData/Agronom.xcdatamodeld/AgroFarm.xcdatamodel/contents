@@ -4,7 +4,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="planted" optional="YES" attributeType="String"/>
-        <attribute name="size" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="cdTask" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDTaskManager" inverseName="cdField" inverseEntity="CDTaskManager"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
