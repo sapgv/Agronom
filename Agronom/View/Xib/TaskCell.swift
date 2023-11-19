@@ -9,12 +9,19 @@ import UIKit
 
 class TaskCell: UITableViewCell {
     
+    @IBOutlet weak var fieldStackView: UIStackView!
+    @IBOutlet weak var fieldLabel: UILabel!
+
+    @IBOutlet weak var operationStackView: UIStackView!
     @IBOutlet weak var operationLabel: UILabel!
     
-    @IBOutlet weak var fieldLabel: UILabel!
-    
+    @IBOutlet weak var vehicleStackView: UIStackView!
     @IBOutlet weak var vehicleLabel: UILabel!
     
+    @IBOutlet weak var toolStackView: UIStackView!
+    @IBOutlet weak var toolLabel: UILabel!
+    
+    @IBOutlet weak var workerStackView: UIStackView!
     @IBOutlet weak var workerLabel: UILabel!
     
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -32,17 +39,20 @@ class TaskCell: UITableViewCell {
     
     func setup(task: CDTaskManager) {
         
-        self.operationLabel.text = task.cdOperation?.name
-        self.operationLabel.isHidden = (task.cdOperation?.name ?? "").isEmpty
-        
         self.fieldLabel.text = task.cdField?.name
-        self.fieldLabel.isHidden = (task.cdField?.name ?? "").isEmpty
+        self.fieldStackView.isHidden = (task.cdField?.name ?? "").isEmpty
+        
+        self.operationLabel.text = task.cdOperation?.name
+        self.operationStackView.isHidden = (task.cdOperation?.name ?? "").isEmpty
         
         self.vehicleLabel.text = task.cdVehicle?.name
-        self.vehicleLabel.isHidden = (task.cdVehicle?.name ?? "").isEmpty
+        self.vehicleStackView.isHidden = (task.cdVehicle?.name ?? "").isEmpty
+        
+        self.toolLabel.text = task.cdTool?.name
+        self.toolStackView.isHidden = (task.cdTool?.name ?? "").isEmpty
         
         self.workerLabel.text = task.cdWorker?.name
-        self.workerLabel.isHidden = (task.cdWorker?.name ?? "").isEmpty
+        self.workerStackView.isHidden = (task.cdWorker?.name ?? "").isEmpty
         
         self.descriptionLabel.text = task.descriptionText
         self.descriptionLabel.isHidden = task.descriptionText.isEmpty
