@@ -151,6 +151,7 @@
                 <outlet property="liquidLabel" destination="HAB-cP-bi7" id="jiY-J0-oj9"/>
                 <outlet property="operationLabel" destination="2eg-sT-4R1" id="jpd-df-RnA"/>
                 <outlet property="operationStackView" destination="t35-sy-IaZ" id="7z1-eA-HqG"/>
+                <outlet property="parameterStackView" destination="iJM-Jo-pbu" id="KfW-Rx-bft"/>
                 <outlet property="speedLabel" destination="tfQ-DW-iMb" id="8cD-7z-0Sq"/>
                 <outlet property="toolLabel" destination="lHu-Iz-DuS" id="eBV-VQ-yEJ"/>
                 <outlet property="toolStackView" destination="vcX-PF-tvg" id="NAL-BH-Nhh"/>

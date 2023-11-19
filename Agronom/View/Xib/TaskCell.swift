@@ -26,6 +26,8 @@ class TaskCell: UITableViewCell {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var parameterStackView: UIStackView!
+    
     @IBOutlet weak var depthLabel: UILabel!
     
     @IBOutlet weak var speedLabel: UILabel!
@@ -62,9 +64,15 @@ class TaskCell: UITableViewCell {
         
         self.speedLabel.text = "Рабочая скорость \(task.speed)"
         self.speedLabel.isHidden = task.speed == 0
-        
+
         self.liquidLabel.text = "Расход рабочего раствора л/га \(task.liquid)"
         self.liquidLabel.isHidden = task.liquid == 0
+        
+        self.parameterStackView.isHidden = (depthLabel.isHidden
+                                             && speedLabel.isHidden
+                                             && liquidLabel.isHidden)
+        
+        
         
     }
 

@@ -11,6 +11,24 @@ final class TaskDetailViewController: ListViewController {
     
     var viewModel: TaskDetailViewModel?
     
+    private let bottomView = {
+        let view = UIView()
+        view.backgroundColor = .groupTableViewBackground
+        return view
+    }()
+    
+    private let bottomStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.distribution = .fill
+        return stackView
+    }()
+    
+    private let startCheckListButton: StartCheckListButton = StartCheckListButton()
+    
+    private let finishCheckListButton: FinishCheckListButton = FinishCheckListButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Задача"
@@ -18,6 +36,60 @@ final class TaskDetailViewController: ListViewController {
         self.layout()
         self.setupViewModel()
         self.setupNavigationButton()
+        self.setupAction()
+        self.updateBottomView()
+    }
+    
+    private func setupAction() {
+        
+        self.startCheckListButton.action = { [weak self] in
+            
+            guard let self = self else { return }
+            guard let task = self.viewModel?.cdTaskManager else { return }
+            
+            let viewContext = Model.coreData.createChildContextFromCoordinator(for: .mainQueueConcurrencyType, mergePolicy: .mergeByPropertyObjectTrump)
+            let cdItem = viewContext.objectInContext(CDTaskManager.self, objectID: task.objectID)!
+            
+            let viewModel = StartCheckListEditViewModel(viewContext: viewContext, cdItem: cdItem)
+            let viewController = StartCheckListEditViewController()
+            viewController.viewModel = viewModel
+            viewController.checkListCompletion = { [weak self] vc in
+                
+                vc.dismiss(animated: true)
+                self?.viewModel?.viewContext.refreshAllObjects()
+                self?.updateBottomView()
+                
+            }
+            
+            let navigationController = UINavigationController(rootViewController: viewController)
+            self.present(navigationController, animated: true)
+            
+        }
+        
+        self.finishCheckListButton.action = { [weak self] in
+            
+            guard let self = self else { return }
+            guard let task = self.viewModel?.cdTaskManager else { return }
+            
+            let viewContext = Model.coreData.createChildContextFromCoordinator(for: .mainQueueConcurrencyType, mergePolicy: .mergeByPropertyObjectTrump)
+            let cdItem = viewContext.objectInContext(CDTaskManager.self, objectID: task.objectID)!
+            
+            let viewModel = FinishCheckListEditViewModel(viewContext: viewContext, cdItem: cdItem)
+            let viewController = FinishCheckListEditViewController()
+            viewController.viewModel = viewModel
+            viewController.checkListCompletion = { [weak self] vc in
+                
+                vc.dismiss(animated: true)
+                self?.viewModel?.viewContext.refreshAllObjects()
+                self?.updateBottomView()
+                
+            }
+            
+            let navigationController = UINavigationController(rootViewController: viewController)
+            self.present(navigationController, animated: true)
+            
+        }
+        
     }
     
     private func setupViewModel() {
@@ -36,6 +108,53 @@ final class TaskDetailViewController: ListViewController {
     private func save() {
         
 //        self.viewModel?.save()
+        
+    }
+    
+    
+    
+    private func updateBottomView() {
+        
+        self.startCheckListButton.isHidden = self.viewModel?.cdTaskManager.datetime_started != nil
+        self.finishCheckListButton.isHidden = self.viewModel?.cdTaskManager.datetime_completed != nil || self.viewModel?.cdTaskManager.datetime_started == nil
+        
+    }
+    
+    override func layout() {
+        
+        self.view.addSubview(self.tableView)
+        self.view.addSubview(self.bottomView)
+        self.view.addSubview(self.bottomStackView)
+        
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.bottomView.translatesAutoresizingMaskIntoConstraints = false
+        self.bottomStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.startCheckListButton.translatesAutoresizingMaskIntoConstraints = false
+        self.finishCheckListButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        self.tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        
+        self.bottomView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        self.bottomView.topAnchor.constraint(equalTo: self.tableView.bottomAnchor).isActive = true
+        self.bottomView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        
+        self.bottomView.addSubview(bottomStackView)
+        
+        self.bottomStackView.addArrangedSubview(self.startCheckListButton)
+        self.bottomStackView.addArrangedSubview(self.finishCheckListButton)
+        
+        self.bottomStackView.leadingAnchor.constraint(equalTo: self.bottomView.leadingAnchor, constant: 8).isActive = true
+        self.bottomStackView.topAnchor.constraint(equalTo: self.bottomView.topAnchor, constant: 8).isActive = true
+        self.bottomStackView.trailingAnchor.constraint(equalTo: self.bottomView.trailingAnchor, constant: -8).isActive = true
+        self.bottomStackView.bottomAnchor.constraint(equalTo: self.bottomView.bottomAnchor, constant: -8).isActive = true
+        
+        self.startCheckListButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        self.finishCheckListButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        self.bottomConstraint = self.bottomView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
+        self.bottomConstraint?.isActive = true
         
     }
     

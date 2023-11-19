@@ -9,6 +9,12 @@ import Foundation
 
 extension CDTaskManager {
 
+    var solary: Decimal {
+        guard let cdField = self.cdField else { return 0 }
+        let value = cdField.size * 200
+        return Decimal(value)
+    }
+    
     var cdImages: [CDImage] {
         get {
             self.images_?.array as? [CDImage] ?? []
