@@ -11,7 +11,7 @@ extension CDTaskManager {
 
     var solary: Decimal {
         guard let cdField = self.cdField else { return 0 }
-        let value = cdField.size * 100
+        let value = cdField.size * 10
         return Decimal(value)
     }
     
