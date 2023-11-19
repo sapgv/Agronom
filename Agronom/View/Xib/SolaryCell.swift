@@ -9,6 +9,8 @@ import UIKit
 
 class SolaryCell: UITableViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    
     @IBOutlet weak var fieldLabel: UILabel!
     
     @IBOutlet weak var operationLabel: UILabel!
@@ -20,14 +22,8 @@ class SolaryCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func setup(item: CDTaskManager) {
-        
+        self.dateLabel.text = item.datetime_completed?.format()
         self.fieldLabel.text = item.cdField?.name
         self.operationLabel.text = item.cdOperation?.name
         self.valueLabel.text = "\(item.solary) Руб"
