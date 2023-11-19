@@ -78,6 +78,8 @@
 		10C811B42B0890A4008FDD86 /* TitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C811B22B0890A4008FDD86 /* TitleCell.xib */; };
 		10ED89122B09C56100DCCD86 /* VehicleEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED89112B09C56100DCCD86 /* VehicleEditViewModel.swift */; };
 		10ED89142B09C57500DCCD86 /* VehicleEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED89132B09C57500DCCD86 /* VehicleEditViewController.swift */; };
+		10ED89172B09C72A00DCCD86 /* ToolEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED89162B09C72A00DCCD86 /* ToolEditViewModel.swift */; };
+		10ED89192B09C76D00DCCD86 /* ToolEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED89182B09C76D00DCCD86 /* ToolEditViewController.swift */; };
 		A0A4D97B60485B32D36C139E /* Pods_Agronom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D740B9B743504471FC8D11D /* Pods_Agronom.framework */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +157,8 @@
 		10C811B22B0890A4008FDD86 /* TitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleCell.xib; sourceTree = "<group>"; };
 		10ED89112B09C56100DCCD86 /* VehicleEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleEditViewModel.swift; sourceTree = "<group>"; };
 		10ED89132B09C57500DCCD86 /* VehicleEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleEditViewController.swift; sourceTree = "<group>"; };
+		10ED89162B09C72A00DCCD86 /* ToolEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolEditViewModel.swift; sourceTree = "<group>"; };
+		10ED89182B09C76D00DCCD86 /* ToolEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolEditViewController.swift; sourceTree = "<group>"; };
 		5D740B9B743504471FC8D11D /* Pods_Agronom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Agronom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF60AAB00787BD6B4FB75AA /* Pods-Agronom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agronom.debug.xcconfig"; path = "Target Support Files/Pods-Agronom/Pods-Agronom.debug.xcconfig"; sourceTree = "<group>"; };
 		C7CA0B3F7F6CF7C542E9F39B /* Pods-Agronom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agronom.release.xcconfig"; path = "Target Support Files/Pods-Agronom/Pods-Agronom.release.xcconfig"; sourceTree = "<group>"; };
@@ -445,6 +449,7 @@
 		106D47E72B09311D00FC4660 /* TOOL MODULE */ = {
 			isa = PBXGroup;
 			children = (
+				10ED89152B09C71100DCCD86 /* ToolEditViewController */,
 				106859042B07F731001FA515 /* ToolListViewController */,
 			);
 			path = "TOOL MODULE";
@@ -483,6 +488,15 @@
 				10ED89132B09C57500DCCD86 /* VehicleEditViewController.swift */,
 			);
 			path = VehicleEditViewController;
+			sourceTree = "<group>";
+		};
+		10ED89152B09C71100DCCD86 /* ToolEditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				10ED89162B09C72A00DCCD86 /* ToolEditViewModel.swift */,
+				10ED89182B09C76D00DCCD86 /* ToolEditViewController.swift */,
+			);
+			path = ToolEditViewController;
 			sourceTree = "<group>";
 		};
 		10F1A6562B0802BA003FCB81 /* FIELD MODULE */ = {
@@ -647,6 +661,7 @@
 				106859222B08018C001FA515 /* VehicleTool.swift in Sources */,
 				106859182B07FE42001FA515 /* WorkerListViewModel.swift in Sources */,
 				106858BE2B07CC5B001FA515 /* Log.swift in Sources */,
+				10ED89192B09C76D00DCCD86 /* ToolEditViewController.swift in Sources */,
 				106858EE2B07ED4E001FA515 /* TaskOperation.swift in Sources */,
 				106859242B08019E001FA515 /* Field.swift in Sources */,
 				106858F42B07F162001FA515 /* CDField + Extensions.swift in Sources */,
@@ -684,6 +699,7 @@
 				106858EA2B07ECF9001FA515 /* OperationListViewController.swift in Sources */,
 				106858C72B07CF32001FA515 /* Api.swift in Sources */,
 				10ED89142B09C57500DCCD86 /* VehicleEditViewController.swift in Sources */,
+				10ED89172B09C72A00DCCD86 /* ToolEditViewModel.swift in Sources */,
 				106859062B07F748001FA515 /* ToolListViewModel.swift in Sources */,
 				106D47D92B090FB000FC4660 /* OperationEditViewController.swift in Sources */,
 				106858FD2B07F499001FA515 /* VehicleListViewModel.swift in Sources */,
