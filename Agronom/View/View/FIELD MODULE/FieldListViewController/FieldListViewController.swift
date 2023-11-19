@@ -24,6 +24,28 @@ final class FieldListViewController: ListViewController {
         self.setupRefreshControll()
         self.setupViewModel()
         self.updateControllerResults()
+        self.setupNavigationButton()
+    }
+    
+    private func setupNavigationButton() {
+        
+        let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(add))
+        self.navigationItem.rightBarButtonItem = addButton
+        
+    }
+    
+    @objc
+    private func add() {
+        
+        let viewContext = Model.coreData.createChildContextFromCoordinator(for: .mainQueueConcurrencyType, mergePolicy: .mergeByPropertyObjectTrump)
+        let cdItem = CDField(context: viewContext)
+        let viewModel = FieldEditViewModel(viewContext: viewContext, cdItem: cdItem)
+        
+        let viewController = FieldEditViewController()
+        viewController.viewModel = viewModel
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
     }
     
     private func setupViewModel() {

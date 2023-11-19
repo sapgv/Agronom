@@ -20,9 +20,9 @@ class EditTextCell: UITableViewCell, UITextViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.textView.delegate = self
-        self.textView.layer.borderWidth = 1
-        self.textView.layer.borderColor = UIColor.separator.cgColor
-        self.textView.layer.cornerRadius = 8
+        self.textView.layer.borderWidth = 2
+        self.textView.layer.borderColor = UIColor.gray.withAlphaComponent(0.1).cgColor
+        self.textView.layer.cornerRadius = 6
         self.textView.clipsToBounds = true
     }
     

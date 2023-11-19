@@ -82,6 +82,8 @@
 		10ED89192B09C76D00DCCD86 /* ToolEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED89182B09C76D00DCCD86 /* ToolEditViewController.swift */; };
 		10ED891C2B09C8C800DCCD86 /* WorkerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED891B2B09C8C800DCCD86 /* WorkerEditViewController.swift */; };
 		10ED891E2B09C8D300DCCD86 /* WorkerEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED891D2B09C8D300DCCD86 /* WorkerEditViewModel.swift */; };
+		10ED89212B09CA0300DCCD86 /* FieldEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED89202B09CA0300DCCD86 /* FieldEditViewController.swift */; };
+		10ED89232B09CA0E00DCCD86 /* FieldEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ED89222B09CA0E00DCCD86 /* FieldEditViewModel.swift */; };
 		A0A4D97B60485B32D36C139E /* Pods_Agronom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D740B9B743504471FC8D11D /* Pods_Agronom.framework */; };
 /* End PBXBuildFile section */
 
@@ -163,6 +165,8 @@
 		10ED89182B09C76D00DCCD86 /* ToolEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolEditViewController.swift; sourceTree = "<group>"; };
 		10ED891B2B09C8C800DCCD86 /* WorkerEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerEditViewController.swift; sourceTree = "<group>"; };
 		10ED891D2B09C8D300DCCD86 /* WorkerEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerEditViewModel.swift; sourceTree = "<group>"; };
+		10ED89202B09CA0300DCCD86 /* FieldEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldEditViewController.swift; sourceTree = "<group>"; };
+		10ED89222B09CA0E00DCCD86 /* FieldEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldEditViewModel.swift; sourceTree = "<group>"; };
 		5D740B9B743504471FC8D11D /* Pods_Agronom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Agronom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF60AAB00787BD6B4FB75AA /* Pods-Agronom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agronom.debug.xcconfig"; path = "Target Support Files/Pods-Agronom/Pods-Agronom.debug.xcconfig"; sourceTree = "<group>"; };
 		C7CA0B3F7F6CF7C542E9F39B /* Pods-Agronom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agronom.release.xcconfig"; path = "Target Support Files/Pods-Agronom/Pods-Agronom.release.xcconfig"; sourceTree = "<group>"; };
@@ -513,9 +517,19 @@
 			path = WorkerEditViewController;
 			sourceTree = "<group>";
 		};
+		10ED891F2B09C9F000DCCD86 /* FieldEditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				10ED89222B09CA0E00DCCD86 /* FieldEditViewModel.swift */,
+				10ED89202B09CA0300DCCD86 /* FieldEditViewController.swift */,
+			);
+			path = FieldEditViewController;
+			sourceTree = "<group>";
+		};
 		10F1A6562B0802BA003FCB81 /* FIELD MODULE */ = {
 			isa = PBXGroup;
 			children = (
+				10ED891F2B09C9F000DCCD86 /* FieldEditViewController */,
 				1068590D2B07F9F5001FA515 /* FieldListViewController */,
 			);
 			path = "FIELD MODULE";
@@ -695,6 +709,7 @@
 				106859122B07FA39001FA515 /* FieldCell.swift in Sources */,
 				106858C02B07CDF3001FA515 /* AppTabViewController.swift in Sources */,
 				106858CC2B07CF48001FA515 /* Storage.swift in Sources */,
+				10ED89212B09CA0300DCCD86 /* FieldEditViewController.swift in Sources */,
 				106858C52B07CEF5001FA515 /* TaskListViewModel.swift in Sources */,
 				106858F02B07F0EF001FA515 /* CDTaskOperation + Extensions.swift in Sources */,
 				1069CDA12B080E8400C3349E /* TaskEditViewController.swift in Sources */,
@@ -707,6 +722,7 @@
 				1069CDA52B080FA200C3349E /* TaskEditSection.swift in Sources */,
 				106859032B07F72E001FA515 /* ToolListViewController.swift in Sources */,
 				106858C32B07CED7001FA515 /* TaskListViewController.swift in Sources */,
+				10ED89232B09CA0E00DCCD86 /* FieldEditViewModel.swift in Sources */,
 				106858A42B07CA7B001FA515 /* SceneDelegate.swift in Sources */,
 				106858E62B07D733001FA515 /* ListViewController.swift in Sources */,
 				106858CB2B07CF48001FA515 /* Service.swift in Sources */,
